@@ -14,14 +14,14 @@ public class Client {
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		TrustAllSSLSocketFactory.trustAllCerts();
 		SocketFactory sockMaker = SSLSocketFactory.getDefault();
-		Socket server = sockMaker.createSocket("localhost", 1443);
-		Logger.getAnonymousLogger().info("Connected to "+server.toString());
+		Socket toServer = sockMaker.createSocket("localhost", 1443);
+		Logger.getAnonymousLogger().info("Connected to "+toServer.toString());
 		byte[] b = new byte[10];
-		int retval = server.getInputStream().read();
+		int retval = toServer.getInputStream().read();
 		Logger.getAnonymousLogger().info("Read with return v: "+retval);
 		Logger.getAnonymousLogger().info("Read a single byte: "+(int)b[0]);
 		
-		server.close();
+		toServer.close();
 	}
 
 }

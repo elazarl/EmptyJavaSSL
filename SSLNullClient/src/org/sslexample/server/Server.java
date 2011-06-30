@@ -43,9 +43,11 @@ public class Server {
 			listen = getServer();
 			Logger.getAnonymousLogger().info("Listening to "+listen.toString());
 			if(true) {
-				SSLSocket client = (SSLSocket)listen.accept();
-				Logger.getAnonymousLogger().info("Accpeted: "+client.toString());
-				client.close();
+				SSLSocket toClient = (SSLSocket)listen.accept();
+//				toClient.startHandshake();
+				// If you'll enable above line, empty connection will work
+				Logger.getAnonymousLogger().info("Accpeted: "+toClient.toString());
+				toClient.close();
 				Logger.getAnonymousLogger().info("Closed");
 			}
 		} catch(Exception e) {
